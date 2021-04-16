@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title color="dark">
+      Notes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <div class="add-notes">
+      <ion-item class="input">
+        <ion-textarea 
+        rows="6" cols="10" 
+        placeholder='Write Something ...' 
+        [(ngModel)]="note"
+        ></ion-textarea>
+      </ion-item>
+      <div class="btn">
+        <ion-button expand="block" fill="outline" (click)="addNotes()">
+          <ion-icon name="add-outline" ></ion-icon>&nbsp; Add Notes
+        </ion-button>
+        <ion-button expand="block" fill="outline" (click)="deleteAll()">
+          <ion-icon name="trash-outline" color="danger"></ion-icon>&nbsp; Delete All Notes
+        </ion-button>
+      </div>
+    </div>
+    
+    <div>
+      <ion-list>
+        <ion-card>
+          <ion-item *ngFor="let note of notes, let i = index">
+            <p>{{note.title}}</p>
+            <ion-button (click)="deleteNote(i)" slot="end" fill="clear">
+              <ion-icon name="trash-outline" color="danger"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-card>
+      </ion-list>
+    </div>
+    </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary">
+    <ion-title>&copy;San Inc</ion-title>
+  </ion-toolbar>
+</ion-footer>
